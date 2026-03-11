@@ -1,0 +1,25 @@
+.portal-header {
+  background: radial-gradient(circle, rgba(18,121,9,1) 0%, rgba(0,0,0,1) 70%);
+  border-bottom: 4px solid #39ff14;
+}
+
+.shadow-text {
+  text-shadow: 2px 2px 8px #39ff14;
+  letter-spacing: 5px;
+}
+
+.character-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+}
+
+.character-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(57, 255, 20, 0.4) !important;
+  cursor: pointer;
+}
+
+.form-control:focus, .form-select:focus {
+  box-shadow: 0 0 10px #39ff14;
+  border-color: #39ff14;
+}

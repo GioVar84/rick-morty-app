@@ -1,0 +1,47 @@
+<div class="container mt-4">
+	<div class="app-title character-title text-center">
+	  <img src="/titulo.png" alt="Título" />
+	</div>
+	<div class="text-center kbd-hint" role="note">Utiliza TAB para Navegar y Seleccionar</div>
+	<div class="text-center mb-2">
+		<span *ngIf="currentPage===1 && searchStatus==='' && !searchName">Mostrando los primeros 20 personajes — All Status</span>
+	</div>
+
+	<div class="row mb-4">
+		<div class="col-md-6">
+			<input type="text" class="form-control" placeholder="Search by name..." 
+						 [(ngModel)]="searchName" (input)="loadData()">
+		</div>
+		<div class="col-md-6">
+			<select class="form-select" [(ngModel)]="searchStatus" (change)="onFilterChange()">
+				<option value="">All Status</option>
+				<option value="alive">Alive</option>
+				<option value="dead">Dead</option>
+				<option value="unknown">Unknown</option>
+			</select>
+		</div>
+	</div>
+
+	<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+	<div *ngIf="loading" class="text-center"><h3>Cargando...</h3></div>
+
+	<div class="row" *ngIf="!loading">
+		<div class="col-md-3 mb-4" *ngFor="let char of characters">
+			<div class="card h-100 shadow-sm">
+				<img [src]="char.image" class="card-img-top" [alt]="char.name">
+				<div class="card-body">
+					<h5 class="card-title">{{ char.name }}</h5>
+					<p class="card-text">
+						<strong>Status:</strong> {{ char.status }} <br>
+						<strong>Species:</strong> {{ char.species }}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="text-center mt-3" *ngIf="!loading && totalPages && currentPage < totalPages">
+		<button class="btn btn-primary" (click)="loadMore()">Ver mas personajes</button>
+	</div>
+</div>

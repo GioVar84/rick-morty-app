@@ -1,11 +1,12 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CharacterListComponent } from './components/character-list/character-list';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [CharacterListComponent],
+  template: '<app-character-list></app-character-list>',
+  styleUrls: ['./app.css']
 })
 export class App {
   protected readonly title = signal('rick-and-morty-app');
